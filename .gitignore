@@ -1,0 +1,11 @@
+# IDE configs
+.vscode
+
+# server data
+/chcluster/_data*
+
+# binaries
+/clickhouse
+/clickhouse.debug
+/clickhouse-common-static-*
+

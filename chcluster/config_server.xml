@@ -1,0 +1,100 @@
+<clickhouse>
+    <logger>
+        <level>trace</level>
+        <console>true</console>
+    </logger>
+
+    <allow_experimental_cluster_discovery>1</allow_experimental_cluster_discovery>
+    <remote_servers>
+        <default>
+            <discovery>
+                <path>/clickhouse/discovery/cluster</path>
+            </discovery>
+
+        </default>
+        <default2>
+            <shard>
+                <replica>
+                    <host>srv1</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>srv2</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>srv3</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+
+        </default2>
+    </remote_servers>
+
+    <listen_host>0.0.0.0</listen_host>
+
+    <macros>
+        <replica from_env="CHREPLICA"/>
+    </macros>
+
+    <zookeeper>
+        <node>
+            <host>kpr1</host>
+            <port>9181</port>
+        </node>
+    </zookeeper>
+
+    <http_port>8123</http_port>
+    <tcp_port>9000</tcp_port>
+    <mysql_port>9004</mysql_port>
+    <interserver_http_port>9009</interserver_http_port>
+
+
+    <path>/var/lib/clickhouse/</path>
+
+    <mlock_executable>true</mlock_executable>
+
+    <users>
+        <default>
+            <password></password>
+
+            <networks>
+                <ip>::/0</ip>
+            </networks>
+
+            <profile>default</profile>
+            <quota>default</quota>
+            <access_management>1</access_management>
+        </default>
+    </users>
+
+    <profiles>
+        <default/>
+    </profiles>
+
+    <quotas>
+        <default />
+    </quotas>
+
+    <distributed_ddl>
+        <path>/clickhouse/task_queue/ddl</path>
+    </distributed_ddl>
+
+    <allow_remove_stale_moving_parts>false</allow_remove_stale_moving_parts>
+
+    <merge_tree>
+        <!--
+            ALTER TABLE ttt ON CLUSTER default2 MODIFY SETTING concurrent_part_removal_threshold = 1000000000;
+        -->
+
+        <!--
+        <temporary_directories_lifetime>1</temporary_directories_lifetime>
+        <old_parts_lifetime>1</old_parts_lifetime>
+        <merge_tree_clear_old_temporary_directories_interval_seconds>1</merge_tree_clear_old_temporary_directories_interval_seconds>
+        <merge_tree_clear_old_parts_interval_seconds>1</merge_tree_clear_old_parts_interval_seconds>
+        <merge_tree_clear_old_broken_detached_parts_ttl_timeout_seconds>1</merge_tree_clear_old_broken_detached_parts_ttl_timeout_seconds>
+        <concurrent_part_removal_threshold>1</concurrent_part_removal_threshold>
+        -->
+
+    </merge_tree>
+</clickhouse>

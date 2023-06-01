@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  kpr1:
+    build:
+      context: .
+    environment:
+      - APP_TYPE=keeper
+    ports:
+      - 9181:9181
+    volumes:
+      - ../clickhouse:/clickhouse
+      - ./config_keeper.xml:/etc/clickhouse-config.xml
+      - ./_data_k:/var/lib/clickhouse
+  srv1:
+    build:
+      context: .
+    environment:
+      - CHREPLICA=1
+    ports:
+      - 9001:9000
+    volumes:
+      - ../clickhouse:/clickhouse
+      - ./config_server.xml:/etc/clickhouse-config.xml
+      - ./_data1:/var/lib/clickhouse
+  srv2:
+    build:
+      context: .
+    environment:
+      - CHREPLICA=2
+    ports:
+      - 9002:9000
+    volumes:
+      - ../clickhouse:/clickhouse
+      - ./config_server.xml:/etc/clickhouse-config.xml
+      - ./_data2:/var/lib/clickhouse
+  srv3:
+    build:
+      context: .
+    environment:
+      - CHREPLICA=3
+    ports:
+      - 9003:9000
+    volumes:
+      - ../clickhouse:/clickhouse
+      - ./config_server.xml:/etc/clickhouse-config.xml
+      - ./_data3:/var/lib/clickhouse
+
+
