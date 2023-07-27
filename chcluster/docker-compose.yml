@@ -9,8 +9,8 @@ services:
       - 9181:9181
     volumes:
       - ../clickhouse:/clickhouse
-      - ./config_keeper.xml:/etc/clickhouse-config.xml
-      - ./_data_k:/var/lib/clickhouse
+      - ./config_keeper.xml:/etc/clickhouse/config.xml
+      - ./_data/kpr:/var/lib/clickhouse
   srv1:
     build:
       context: .
@@ -20,8 +20,9 @@ services:
       - 9001:9000
     volumes:
       - ../clickhouse:/clickhouse
-      - ./config_server.xml:/etc/clickhouse-config.xml
-      - ./_data1:/var/lib/clickhouse
+      - ./config_server.xml:/etc/clickhouse/config.xml
+      - ./config.d:/etc/clickhouse/config.d
+      - ./_data/srv1:/var/lib/clickhouse
   srv2:
     build:
       context: .
@@ -31,8 +32,9 @@ services:
       - 9002:9000
     volumes:
       - ../clickhouse:/clickhouse
-      - ./config_server.xml:/etc/clickhouse-config.xml
-      - ./_data2:/var/lib/clickhouse
+      - ./config_server.xml:/etc/clickhouse/config.xml
+      - ./config.d:/etc/clickhouse/config.d
+      - ./_data/srv2:/var/lib/clickhouse
   srv3:
     build:
       context: .
@@ -42,7 +44,8 @@ services:
       - 9003:9000
     volumes:
       - ../clickhouse:/clickhouse
-      - ./config_server.xml:/etc/clickhouse-config.xml
-      - ./_data3:/var/lib/clickhouse
+      - ./config_server.xml:/etc/clickhouse/config.xml
+      - ./config.d:/etc/clickhouse/config.d
+      - ./_data/srv3:/var/lib/clickhouse
 
 

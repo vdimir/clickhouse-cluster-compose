@@ -2,7 +2,10 @@
 .vscode
 
 # server data
-/chcluster/_data*
+/chcluster/_data
+
+# custom configs
+/chcluster/config.d/*.xml
 
 # binaries
 /clickhouse
