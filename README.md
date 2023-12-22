@@ -1,6 +1,6 @@
 Run clickhouse cluster in docker compose
 
-1. Copy `clickhuse` binary to root of this repo
+1. Copy `clickhouse` binary to root of this repo
 
 1. Run cluster
 
@@ -17,7 +17,7 @@ docker compose -f ./docker-compose.yml up --build -d
 docker build -t chcluster .
 
 # run server manually
-docker run --rm -it --network=chcluster_default --volume $HOME/clickhouse:/clickhouse -v $PWD/config_server.xml:/etc/clickhouse/config.xml chcluster
+docker run --rm -it --network=chcluster_default --v $HOME/clickhouse:/clickhouse -v $PWD/config_server.xml:/etc/clickhouse/config.xml -v $PWD/config.d:/etc/clickhouse/config.d chcluster
 
 # Ports 9001 9002 9003 exposed to host, so you can run client from host
 clickhouse client -mn --port 9001

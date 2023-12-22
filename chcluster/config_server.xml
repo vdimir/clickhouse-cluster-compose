@@ -79,22 +79,4 @@
     <distributed_ddl>
         <path>/clickhouse/task_queue/ddl</path>
     </distributed_ddl>
-
-    <allow_remove_stale_moving_parts>false</allow_remove_stale_moving_parts>
-
-    <merge_tree>
-        <!--
-            ALTER TABLE ttt ON CLUSTER default2 MODIFY SETTING concurrent_part_removal_threshold = 1000000000;
-        -->
-
-        <!--
-        <temporary_directories_lifetime>1</temporary_directories_lifetime>
-        <old_parts_lifetime>1</old_parts_lifetime>
-        <merge_tree_clear_old_temporary_directories_interval_seconds>1</merge_tree_clear_old_temporary_directories_interval_seconds>
-        <merge_tree_clear_old_parts_interval_seconds>1</merge_tree_clear_old_parts_interval_seconds>
-        <merge_tree_clear_old_broken_detached_parts_ttl_timeout_seconds>1</merge_tree_clear_old_broken_detached_parts_ttl_timeout_seconds>
-        <concurrent_part_removal_threshold>1</concurrent_part_removal_threshold>
-        -->
-
-    </merge_tree>
 </clickhouse>
