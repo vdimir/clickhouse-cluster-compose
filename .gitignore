@@ -3,9 +3,11 @@
 
 # server data
 /chcluster/_data
+/chcluster/_logs
 
 # custom configs
 /chcluster/config.d/*.xml
+/chcluster/config.d/*.xml.disable
 
 # binaries
 /clickhouse
