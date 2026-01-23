@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:25.10
 
 RUN apt update && apt install -y \
     inetutils-ping \
@@ -10,7 +10,7 @@ RUN apt update && apt install -y \
     software-properties-common \
     wget \
     vim \
-    telnet netcat net-tools \
+    telnet net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 ENV APP_TYPE=server
